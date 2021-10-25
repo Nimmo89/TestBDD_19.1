@@ -1,11 +1,13 @@
 import org.junit.jupiter.api.Test;
 import data.DataHelper;
+import page.DashboardPage;
 import page.LoginPage;
 
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.*;
 
 public class MoneyTransferTest {
+    public DashboardPage dashboardPage = new DashboardPage();
 
     @Test
     void shouldTransferWithOneOnTwo() {
