@@ -17,8 +17,6 @@ public class MoneyTransferTest {
         var verificationPage = loginPage.validLogin(authInfo);
         var verificationCode = DataHelper.getVerificationCodeFor(authInfo);
         var dashboardPage = verificationPage.validVerify(verificationCode);
-//        var cardBalance = dashboardPage.getOneCardBalance();
-//        verificationPage.validVerify(verificationCode);
         int actual = dashboardPage.getOneCardBalance();
         int pay = 500;
         $("[data-test-id='92df3f1c-a033-48e6-8390-206f6b1f56c0'] .button").click();
