@@ -32,7 +32,7 @@ private ElementsCollection cards = $$(".list__item");
         return extractBalance(text);
     }
 
-    public int extractBalance(String text) {
+    private int extractBalance(String text) {
         val start = text.indexOf(balanceStart);
         val finish = text.indexOf(balanceFinish);
         val value = text.substring(start + balanceStart.length() + finish);
