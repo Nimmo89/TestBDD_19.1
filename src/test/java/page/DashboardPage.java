@@ -1,8 +1,10 @@
 package page;
 
 import com.codeborne.selenide.*;
+import data.DataHelper;
 import lombok.val;
 
+import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.*;
 
@@ -17,19 +19,19 @@ private ElementsCollection cards = $$(".list__item");
     private final String balanceStart = "баланс: ";
     private final String balanceFinish = " р.";
 
-//    public Dashboard() {
-//    }
-
     public int getOneCardBalance() {
         val text = cards.first().text();
-//        val oneCard = cards.get(1).$("[data-test-id=92df3f1c-a033-48e6-8390-206f6b1f56c0]");
         return extractBalance(text);
     }
 
     public int getTwoCardBalance() {
         val text = cards.last().text();
-//        val twoCard = cards.get(2).$("[data-test-id=0f3f5c2a-249e-4c3d-8287-09f7a039391d]")
         return extractBalance(text);
+    }
+
+    public TransferPage selectCardToTransfer(DataHelper.CardInfo cardInfo) {
+        cards.findBy(text(cardInfo.getCardNumber().substring(12, 16))).$("button").click();
+        return new TransferPage();
     }
 
     private int extractBalance(String text) {
